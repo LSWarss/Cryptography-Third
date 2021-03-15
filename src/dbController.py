@@ -13,12 +13,15 @@ class DatabaseController:
         
         self.connection.commit()
         
-    def showAllTables(self): 
-        self.c.execute('''SELECT * FROM passwords''')
-        for row in self.c:
+    def showAllPasswords(self): 
+        allrows = self.c.execute('''SELECT * FROM passwords''').fetchall()
+        for row in allrows:
             print(row)
         self.connection.commit()
+        return len(allrows)
 
     def insertPassword(self,account):
-        query = ''' INSERT INTO passwords(name,password, salt) VALUES (?,?, ?)'''
-    
+        query = ''' INSERT INTO passwords (name, password, salt) VALUES (?,?,?)'''
+        self.c.execute(query, (account.name, account.password, account.salt))
+        self.connection.commit()
+        return self.c.lastrowid
