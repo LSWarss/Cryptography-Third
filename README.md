@@ -1,6 +1,6 @@
 # Cryptography-Third
 
-Third Cryptography Subject Repository - Hashing and storing passwords in SQLite database
+Third Cryptography Subject Repository - Storing passwords in SQLite and hashing ✅
 
 ## How to use:
 
